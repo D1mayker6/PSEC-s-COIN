@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 762b42554b7658149a7364d232e192e0
+guid: 6701daed5b71b844aae68dc93c8a8597
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2530564911472380330
-    second: button_0
+      213: 7406373343056424196
+    second: Parfyanovich_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -178,13 +178,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: button_0
+      name: Parfyanovich_0
       rect:
         serializedVersion: 2
-        x: 37
-        y: 26
-        width: 921
-        height: 974
+        x: 0
+        y: 0
+        width: 1748
+        height: 2480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,8 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aa90165216f5e1320800000000000000
-      internalID: 2530564911472380330
+      spriteID: 40decca9059b8c660800000000000000
+      internalID: 7406373343056424196
       vertices: []
       indices: 
       edges: []
@@ -213,7 +213,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      button_0: 2530564911472380330
+      Parfyanovich_0: 7406373343056424196
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

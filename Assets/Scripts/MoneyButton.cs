@@ -23,8 +23,13 @@ public class MoneyButton : MonoBehaviour
         {
                 if (Input.GetMouseButtonDown(0))
                 {
-                        Money += 1;
-                        _buttonAnimator.SetTrigger("click");
+                        _buttonAnimator.SetTrigger("down");
+                        
+                }
+                if (Input.GetMouseButtonUp(0))
+                {
+                    _buttonAnimator.SetTrigger("up");
+                    Money += 1;
                 }
         }
 }
