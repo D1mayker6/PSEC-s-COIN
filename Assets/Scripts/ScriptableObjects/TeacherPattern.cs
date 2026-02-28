@@ -12,8 +12,6 @@ namespace ScriptableObjects
         [Header("Основная информация")]
         public string TeacherName;
         public string Phrase;
-        [TextArea(3, 5)]
-        public string Description;
         public Sprite Sprite;
 
         [Header("Экономика")]

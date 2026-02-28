@@ -10,10 +10,9 @@ namespace UI
     {
         [Header("Ссылки на UI")]
         [SerializeField] private Image _avatarImage;
-        [SerializeField] private GameObject _questionMarkIcon; 
+        [SerializeField] private TextMeshProUGUI _questionMarkIcon; 
         [SerializeField] private TextMeshProUGUI _nameText;
         [SerializeField] private TextMeshProUGUI _phraseText;
-        [SerializeField] private TextMeshProUGUI _descriptionText;
         [SerializeField] private TextMeshProUGUI _bonusText;
         [SerializeField] private TextMeshProUGUI _costText;
         [SerializeField] private Button _buyButton;
@@ -44,12 +43,11 @@ namespace UI
             {
 
                 _avatarImage.sprite = _data.Sprite;
-                _avatarImage.color = Color.white; 
-                _questionMarkIcon.SetActive(false);
+                _avatarImage.color = Color.white;
+                _questionMarkIcon.alpha = 0;
 
                 _nameText.text = "Имя: " + _data.TeacherName;
                 _phraseText.text = "Фраза: \"" + _data.Phrase + "\"";
-                _descriptionText.text = "Описание: " + _data.Description;
             
                 string bonusStr = _data.BonusType == BonusType.ClickPower ? "+ к клику" : "+ к пассиву";
                 _bonusText.text = $"Бонус: {_data.BonusValue} ({bonusStr})";
@@ -61,11 +59,10 @@ namespace UI
 
                 _avatarImage.sprite = null; 
                 _avatarImage.color = Color.black; 
-                _questionMarkIcon.SetActive(true); 
+                _questionMarkIcon.alpha = 255;
 
                 _nameText.text = "Имя: ???";
                 _phraseText.text = "Фраза: ???";
-                _descriptionText.text = "Описание: ???";
                 _bonusText.text = "Бонус: ???";
             
                 _buyButton.gameObject.SetActive(true);
