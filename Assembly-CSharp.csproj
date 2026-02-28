@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\MoneyButton.cs" />
+    <Compile Include="Assets\Scripts\SaveManager.cs" />
     <Compile Include="Assets\Scripts\UI\TeacherCardUI.cs" />
+    <Compile Include="Assets\Scripts\SaveData.cs" />
     <Compile Include="Assets\Scripts\CollectionManager.cs" />
     <Compile Include="Assets\Scripts\Enums\BonusType.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\TeacherPattern.cs" />

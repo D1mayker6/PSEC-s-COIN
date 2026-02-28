@@ -19,31 +19,27 @@ public class CollectionManager : MonoBehaviour
     private void Start()
     {
         
-        foreach (var teacher in _allTeachers)
+        for (int i = 0; i < _allTeachers.Length; i++)
         {
             GameObject newCard = Instantiate(_cardPrefab, _contentContainer);
             TeacherCardUI cardUI = newCard.GetComponent<TeacherCardUI>();
-            cardUI.Setup(teacher, this);
+            cardUI.Setup(_allTeachers[i], this, i); 
             _spawnedCards.Add(cardUI);
         }
         
         ApplyAllBonuses(); 
     }
 
-    public void TryBuyTeacher(TeacherPattern data, TeacherCardUI cardUI)
+    public void TryBuyTeacher(TeacherPattern data, TeacherCardUI cardUI, int index)
     {
-        if (CurrentMoney >= data.Cost)
+        if (CurrentMoney >= data.Cost && index == SaveManager.Data.LastUnlockedIndex + 1)
         {
-            
             CurrentMoney -= data.Cost;
-
-            PlayerPrefs.SetInt(data.TeacherID, 1);
-            PlayerPrefs.Save();
-
-            cardUI.UpdateUI();
+            
+            SaveManager.Data.LastUnlockedIndex = index;
+            SaveManager.Save();
 
             UpdateAllCards();
-            
             ApplyAllBonuses();
         }
     }
@@ -61,10 +57,11 @@ public class CollectionManager : MonoBehaviour
         float totalClickBonus = 0;
         float totalPassiveBonus = 0;
 
-        foreach (var teacher in _allTeachers)
+        for (int i = 0; i <= SaveManager.Data.LastUnlockedIndex; i++)
         {
-            if (PlayerPrefs.GetInt(teacher.TeacherID, 0) == 1) // Если куплен
+            if (i < _allTeachers.Length) 
             {
+                var teacher = _allTeachers[i];
                 if (teacher.BonusType == BonusType.ClickPower)
                     totalClickBonus += teacher.BonusValue;
                 else if (teacher.BonusType == BonusType.PassiveIncome)

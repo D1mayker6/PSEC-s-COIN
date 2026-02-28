@@ -7,7 +7,7 @@ namespace ScriptableObjects
     public class TeacherPattern : ScriptableObject
     {
         [Header("Идентификатор для сохранений")]
-        public string TeacherID; 
+        public int TeacherID; 
 
         [Header("Основная информация")]
         public string TeacherName;

@@ -20,11 +20,13 @@ namespace UI
 
         private TeacherPattern _data;
         private CollectionManager _manager;
+        private int _currentIndex;
 
-        public void Setup(TeacherPattern data, CollectionManager manager)
+        public void Setup(TeacherPattern data, CollectionManager manager, int index)
         {
             _data = data;
             _manager = manager;
+            _currentIndex = index;
         
             _buyButton.onClick.RemoveAllListeners();
             _buyButton.onClick.AddListener(OnBuyClicked);
@@ -35,7 +37,8 @@ namespace UI
         public void UpdateUI()
         {
 
-            bool isUnlocked = PlayerPrefs.GetInt(_data.TeacherID, 0) == 1;
+            bool isUnlocked = _currentIndex <= SaveManager.Data.LastUnlockedIndex;
+            bool isNextInLine = _currentIndex == SaveManager.Data.LastUnlockedIndex + 1;
 
             if (isUnlocked)
             {
@@ -66,16 +69,22 @@ namespace UI
                 _bonusText.text = "Бонус: ???";
             
                 _buyButton.gameObject.SetActive(true);
-                _costText.text = "Купить: " + _data.Cost;
-
-
-                _buyButton.interactable = _manager.CurrentMoney >= _data.Cost;
+                if (isNextInLine)
+                {
+                    _costText.text = "Купить: " + _data.Cost;
+                    _buyButton.interactable = _manager.CurrentMoney >= _data.Cost;
+                }
+                else
+                {
+                    _costText.text = "Заблокировано";
+                    _buyButton.interactable = false; 
+                }
             }
         }
 
         private void OnBuyClicked()
         {
-            _manager.TryBuyTeacher(_data, this);
+            _manager.TryBuyTeacher(_data, this, _currentIndex);
         }
     }
 }
