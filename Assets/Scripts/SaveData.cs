@@ -4,5 +4,6 @@ namespace DefaultNamespace
     public class SaveData
     {
         public int LastUnlockedIndex = -1; 
+        public int CurrentViewIndex = 0;
     }
 }

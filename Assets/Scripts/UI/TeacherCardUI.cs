@@ -18,10 +18,10 @@ namespace UI
         [SerializeField] private Button _buyButton;
 
         private TeacherPattern _data;
-        private CollectionManager _manager;
+        private TeacherGalleryManager _manager;
         private int _currentIndex;
 
-        public void Setup(TeacherPattern data, CollectionManager manager, int index)
+        public void Setup(TeacherPattern data, TeacherGalleryManager manager, int index)
         {
             _data = data;
             _manager = manager;
@@ -81,7 +81,7 @@ namespace UI
 
         private void OnBuyClicked()
         {
-            _manager.TryBuyTeacher(_data, this, _currentIndex);
+            _manager.TryBuyTeacher(_data, _currentIndex);
         }
     }
 }
